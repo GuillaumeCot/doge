@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MarketStreamService} from "../services/market-stream.service";
-import {catchError, filter, map, Observable, tap} from "rxjs";
+import {filter, map, Observable, tap} from "rxjs";
 import {
   AsyncPipe,
   DecimalPipe,
@@ -9,7 +9,8 @@ import {
   NgClass,
   NgIf,
   NgOptimizedImage,
-  TitleCasePipe, UpperCasePipe
+  TitleCasePipe,
+  UpperCasePipe
 } from "@angular/common";
 import {TableModule} from "primeng/table";
 import {Cryptocurrency} from "../../core/enums/cryptocurrency.enum";
