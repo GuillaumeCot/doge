@@ -1,0 +1,319 @@
+@import "../variables/breakpoints";
+
+.align-items-start {
+  align-items: self-start !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.align-items-baseline {
+  align-items: baseline !important;
+}
+
+.align-items-end {
+  align-items: self-end !important;
+}
+
+.align-self-end {
+  align-self: self-end !important;
+}
+
+.bottom {
+  bottom: 0 !important;
+}
+
+.center {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.d-inline-flex {
+  display: inline-flex !important;
+}
+
+.d-grid {
+  display: grid !important;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.flex-col {
+  flex-direction: column !important;
+}
+
+.flex-row {
+  flex-direction: row !important;
+}
+
+.h-100 {
+  height: 100% !important;
+}
+
+.hidden {
+  visibility: hidden !important;
+}
+
+.horizontal-center {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+.img-fluid {
+  width: 100% !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+.justify-content-center {
+  justify-content: center !important;
+}
+
+.justify-content-around {
+  justify-content: space-around !important;
+}
+
+.justify-content-end {
+  justify-content: flex-end !important;
+}
+
+.justify-content-start {
+  justify-content: flex-start !important;
+}
+
+.left {
+  left: 0 !important;
+}
+
+.max-width-none {
+  max-width: none !important;
+}
+
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
+.overflow-visible {
+  overflow: visible !important;
+}
+
+.pointer-events-none {
+  pointer-events: none !important;
+}
+
+.position-absolute {
+  position: absolute !important;
+}
+
+.position-relative {
+  position: relative !important;
+}
+
+.right {
+  right: 0 !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-underline {
+  text-decoration: underline !important;
+}
+
+.top {
+  top: 0 !important;
+}
+
+.vertical-center {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.w-50 {
+  width: 50% !important;
+}
+
+.w-75 {
+  width: 75% !important;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.w-auto {
+  width: auto !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+@each $breakpointKey, $breakpointValue in $breakpoints {
+  @media screen and (min-width: #{$breakpointValue}px) {
+    .align-items-#{$breakpointKey}-start {
+      align-items: self-start !important;
+    }
+
+    .align-items-#{$breakpointKey}-center {
+      align-items: center !important;
+    }
+
+    .align-items-#{$breakpointKey}-end {
+      align-items: self-end !important;
+    }
+
+    .align-self-#{$breakpointKey}-end {
+      align-self: self-end !important;
+    }
+
+    .center-#{$breakpointKey} {
+      position: absolute !important;
+      left: 50% !important;
+      top: 50% !important;
+      transform: translate(-50%, -50%) !important;
+    }
+
+    .d-#{$breakpointKey}-block {
+      display: block !important;
+    }
+
+    .d-#{$breakpointKey}-flex {
+      display: flex !important;
+    }
+
+    .d-#{$breakpointKey}-inline-flex {
+      display: inline-flex !important;
+    }
+
+    .d-#{$breakpointKey}-grid {
+      display: grid !important;
+    }
+
+    .d-#{$breakpointKey}-none {
+      display: none !important;
+    }
+
+    .flex-#{$breakpointKey}-col {
+      flex-direction: column !important;
+    }
+
+    .flex-#{$breakpointKey}-row {
+      flex-direction: row !important;
+    }
+
+    .h-#{$breakpointKey}-100 {
+      height: 100% !important;
+    }
+
+    .hidden-#{$breakpointKey} {
+      visibility: hidden !important;
+    }
+
+    .horizontal-#{$breakpointKey}-center {
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+    }
+
+    .justify-content-#{$breakpointKey}-between {
+      justify-content: space-between !important;
+    }
+
+    .justify-content-#{$breakpointKey}-center {
+      justify-content: center !important;
+    }
+
+    .justify-content-#{$breakpointKey}-end {
+      justify-content: flex-end !important;
+    }
+
+    .justify-content-#{$breakpointKey}-start {
+      justify-content: flex-start !important;
+    }
+
+    .max-width-#{$breakpointKey}-none {
+      max-width: none !important;
+    }
+
+    .overflow-#{$breakpointKey}-hidden {
+      overflow: hidden !important;
+    }
+
+    .overflow-#{$breakpointKey}-visible {
+      overflow: visible !important;
+    }
+
+    .pointer-events-#{$breakpointKey}-none {
+      pointer-events: none !important;
+    }
+
+    .position-#{$breakpointKey}-absolute {
+      position: absolute !important;
+    }
+
+    .position-#{$breakpointKey}-relative {
+      position: relative !important;
+    }
+
+    .text-#{$breakpointKey}-center {
+      text-align: center !important;
+    }
+
+    .text-#{$breakpointKey}-left {
+      text-align: left !important;
+    }
+
+    .text-#{$breakpointKey}-right {
+      text-align: right !important;
+    }
+
+    .text-#{$breakpointKey}-underline {
+      text-decoration: underline !important;
+    }
+
+    .vertical-#{$breakpointKey}-center {
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+    }
+
+    .w-#{$breakpointKey}-50 {
+      width: 50% !important;
+    }
+
+    w-#{$breakpointKey}-75 {
+      width: 75% !important;
+    }
+
+    w-#{$breakpointKey}-100 {
+      width: 100% !important;
+    }
+
+    w-#{$breakpointKey}-auto {
+      width: auto !important;
+    }
+  }
+}

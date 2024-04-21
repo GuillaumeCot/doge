@@ -1,0 +1,19 @@
+@import "../variables/breakpoints";
+@import "../variables/font-sizes";
+
+@each $fs in $font-sizes {
+  .fs-#{$fs} {
+    font-size: $fs * 0.0625rem !important;
+  }
+}
+
+@each $breakpointKey, $breakpointValue in $breakpoints {
+  @media screen and (min-width: #{$breakpointValue}px) {
+    @each $fs in $font-sizes {
+
+      .fs-#{$breakpointKey}-#{$fs} {
+        font-size: $fs * 0.0625rem !important;
+      }
+    }
+  }
+}

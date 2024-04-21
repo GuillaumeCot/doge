@@ -1,0 +1,16 @@
+$breakpoints: (
+  "sm": 767.98,
+  "lg": 1279.98,
+  "xl": 1439.98,
+  "xxl": 1919.98
+);
+
+$breakpoints-unit: "px";
+
+@function breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @return map-get($breakpoints, $breakpoint) + $breakpoints-unit;
+  } @else {
+    @error "Breakpoint `#{$breakpoint}` does not exist.";
+  }
+}

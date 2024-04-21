@@ -1,0 +1,11 @@
+<div [class.lightMode]="lightMode">
+  <app-header (toggleModeEvent)="lightMode = $event"></app-header>
+
+  <div class="mainContainer">
+    <div class="inner">
+      <router-outlet></router-outlet>
+    </div>
+
+    <app-footer></app-footer>
+  </div>
+</div>

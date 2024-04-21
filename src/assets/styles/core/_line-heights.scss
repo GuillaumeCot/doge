@@ -1,0 +1,8 @@
+@import "../variables/breakpoints";
+@import "../variables/line-heights";
+
+@each $lh in $line-heights {
+  .lh-#{$lh} {
+    line-height: $lh * 1px !important;
+  }
+}

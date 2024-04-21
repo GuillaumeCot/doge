@@ -1,0 +1,34 @@
+@import "../variables/border-radius";
+@import "../variables/breakpoints";
+
+@each $br in $borderRadius {
+  $brValue: 0;
+
+  @if($br == 0) {
+    $brValue: $br;
+  } @else {
+    $brValue: #{$br}px;
+  }
+
+  .br-#{$br} {
+    border-radius: #{$brValue} !important;
+  }
+}
+
+@each $breakpointKey, $breakpointValue in $breakpoints {
+  @media screen and (min-width: #{$breakpointValue}px) {
+    @each $br in $borderRadius {
+      $brValue: 0;
+
+      @if($br == 0) {
+        $marginValue: $br;
+      } @else {
+        $marginValue: #{$br}px;
+      }
+
+      .br-#{$breakpointKey}-#{$br} {
+        border-radius: #{$brValue} !important;
+      }
+    }
+  }
+}

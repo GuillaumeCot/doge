@@ -1,0 +1,93 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "reset/reset";
+
+@import "core/border-radius";
+@import "core/colors";
+@import "core/font-sizes";
+@import "core/grid";
+@import "core/helpers";
+@import "core/line-heights";
+@import "core/margins";
+@import "core/paddings";
+@import "core/texts";
+
+@import "primeng/resources/primeng.css";
+@import "theme/theme";
+
+@import "mixins/fonts";
+@import "mixins/font-sizes";
+
+@import "fonts/icomoon/icomoon";
+
+body {
+  overflow: hidden;
+}
+
+* {
+  @include cutive-regular;
+  box-sizing: border-box;
+  color: $white;
+}
+
+img {
+  max-width: 100%;
+}
+
+.primary-button {
+  @include cutive-regular;
+  align-items: center;
+  background-color: $doge-dark;
+  border-radius: 20px;
+  color: $black;
+  display: inline-flex;
+  height: 40px;
+  justify-content: center;
+  padding: 0 20px;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    border-radius: 20px;
+    border: 1px dashed $black;
+  }
+
+  &:hover {
+    background-color: $doge-light;
+  }
+}
+
+.dashedBox {
+  align-items: center;
+  background-color: $doge-blue;
+  border-radius: 20px;
+  border: 2px dashed $white;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  max-width: 100vw;
+
+  p {
+    @include font-size(24);
+  }
+}
+
+// 1280px
+@media screen and (min-width: breakpoint("lg")) {
+  .dashedBox {
+    min-width: 512px;
+    min-height: 200px;
+    padding: 40px;
+
+    p {
+      @include font-size(32);
+    }
+  }
+}

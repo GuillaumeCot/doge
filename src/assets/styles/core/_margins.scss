@@ -1,0 +1,66 @@
+@import "../variables/margins";
+@import "../variables/breakpoints";
+
+@each $margin in $margins {
+  $marginValue: 0;
+
+  @if($margin == 0) {
+    $marginValue: $margin;
+  } @else {
+    $marginValue: #{$margin}px;
+  }
+
+  .m-#{$margin} {
+    margin: #{$marginValue} !important;
+  }
+
+  .mt-#{$margin} {
+    margin-top: #{$marginValue} !important;
+  }
+
+  .mr-#{$margin} {
+    margin-right: #{$marginValue} !important;
+  }
+
+  .mb-#{$margin} {
+    margin-bottom: #{$marginValue} !important;
+  }
+
+  .ml-#{$margin} {
+    margin-left: #{$marginValue} !important;
+  }
+}
+
+@each $breakpointKey, $breakpointValue in $breakpoints {
+  @media screen and (min-width: #{$breakpointValue}px) {
+    @each $margin in $margins {
+      $marginValue: 0;
+
+      @if($margin == 0) {
+        $marginValue: $margin;
+      } @else {
+        $marginValue: #{$margin}px;
+      }
+
+      .m-#{$breakpointKey}-#{$margin} {
+        margin: #{$marginValue} !important;
+      }
+
+      .mt-#{$breakpointKey}-#{$margin} {
+        margin-top: #{$marginValue} !important;
+      }
+
+      .mr-#{$breakpointKey}-#{$margin} {
+        margin-right: #{$marginValue} !important;
+      }
+
+      .mb-#{$breakpointKey}-#{$margin} {
+        margin-bottom: #{$marginValue} !important;
+      }
+
+      .ml-#{$breakpointKey}-#{$margin} {
+        margin-left: #{$marginValue} !important;
+      }
+    }
+  }
+}

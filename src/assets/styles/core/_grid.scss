@@ -1,0 +1,51 @@
+@use "sass:math";
+
+@import "../variables/breakpoints";
+
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+[class^="col-"], [class*=" col-"] {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@for $i from 1 through 12 {
+  $width: math.div(100, 12);
+
+  .col-#{$i} {
+    -ms-flex: 0 0 percentage(math.div($width, 100) * $i);
+    flex: 0 0 percentage(math.div($width, 100) * $i);
+    max-width: percentage(math.div($width, 100) * $i);
+  }
+}
+
+@each $breakpointKey, $breakpointValue in $breakpoints {
+  @media (min-width: #{$breakpointValue}#{$breakpoints-unit}) {
+    @for $i from 1 through 12 {
+      $width: math.div(100, 12);
+
+      .col-#{$breakpointKey}-#{$i} {
+        -ms-flex: 0 0 percentage(math.div($width, 100) * $i);
+        flex: 0 0 percentage(math.div($width, 100) * $i);
+        max-width: percentage(math.div($width, 100) * $i);
+      }
+    }
+  }
+}

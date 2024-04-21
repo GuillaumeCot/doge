@@ -1,0 +1,66 @@
+@import "../variables/paddings";
+@import "../variables/breakpoints";
+
+@each $padding in $paddings {
+  $paddingValue: 0;
+
+  @if($padding == 0) {
+    $paddingValue: $padding;
+  } @else {
+    $paddingValue: #{$padding}px;
+  }
+
+  .p-#{$padding} {
+    padding: #{$paddingValue} !important;
+  }
+
+  .pt-#{$padding} {
+    padding-top: #{$paddingValue} !important;
+  }
+
+  .pr-#{$padding} {
+    padding-right: #{$paddingValue} !important;
+  }
+
+  .pb-#{$padding} {
+    padding-bottom: #{$paddingValue} !important;
+  }
+
+  .pl-#{$padding} {
+    padding-left: #{$paddingValue} !important;
+  }
+}
+
+@each $breakpointKey, $breakpointValue in $breakpoints {
+  @media screen and (min-width: #{$breakpointValue}px) {
+    @each $padding in $paddings {
+      $paddingValue: 0;
+
+      @if($padding == 0) {
+        $paddingValue: $padding;
+      } @else {
+        $paddingValue: #{$padding}px;
+      }
+
+      .p-#{$breakpointKey}-#{$padding} {
+        padding: #{$paddingValue} !important;
+      }
+
+      .pt-#{$breakpointKey}-#{$padding} {
+        padding-top: #{$paddingValue} !important;
+      }
+
+      .pr-#{$breakpointKey}-#{$padding} {
+        padding-right: #{$paddingValue} !important;
+      }
+
+      .pb-#{$breakpointKey}-#{$padding} {
+        padding-bottom: #{$paddingValue} !important;
+      }
+
+      .pl-#{$breakpointKey}-#{$padding} {
+        padding-left: #{$paddingValue} !important;
+      }
+    }
+  }
+}
