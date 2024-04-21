@@ -1,0 +1,25 @@
+<div class="headerMin">
+  <app-header-min [items]="items" (toggleModeEvent)="toggleMode()"></app-header-min>
+</div>
+
+<div class="header">
+  <p-megaMenu [model]="items" [styleClass]="'megaMenu'">
+    <ng-template pTemplate="start">
+      <h1 class="d-flex align-items-center">
+        <img src="assets/img/svg/doge.svg" height="60" width="60" alt=""/>
+        <span class="ml-20 roboto-bold fs-32">DOGECOIN</span>
+      </h1>
+    </ng-template>
+    <ng-template pTemplate="end">
+      <div class="d-flex align-items-center">
+        <ul class="d-flex align-items-center">
+          <li class="noBorder" *ngIf="trades$ | async">${{ dogePrice }}</li>
+          <li><button class="toggleModeButton" (click)="toggleMode()"><span class="icon-brightness-contrast fs-24"></span></button></li>
+          <li>
+            <a class="primary-button" [routerLink]="'buy-tickets'">Métropolitain</a>
+          </li>
+        </ul>
+      </div>
+    </ng-template>
+  </p-megaMenu>
+</div>

@@ -1,0 +1,64 @@
+<div class="footer">
+  <div class="topPart">
+    <p class="d-flex align-items-center">
+      <img src="assets/img/svg/doge.svg" height="60" width="60" alt=""/>
+      <span class="ml-20 roboto-bold fs-32">DOGECOIN</span>
+    </p>
+
+    <button class="goToButton" (click)="goToTop()">
+      <span class="icon-arrow-up fs-24"></span>
+    </button>
+  </div>
+
+  <div class="middlePart">
+    <div class="leftPart">
+      <div class="inner">
+        <label for="email" class="mb-20">Get latest updates<br>About DOGECOIN</label>
+
+        <form [formGroup]="newsletterForm" (submit)="submitNewsletterForm()">
+          <div class="inputContainer">
+            <input id="email" type="email" formControlName="email" placeholder="Enter your email address" required>
+            <button type="submit">
+              <span class="icon-arrow-up-right fs-16"></span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="rightPart">
+      <ul>
+        <li>
+          <h2>Sitemap</h2>
+          <ul>
+            <li><a [routerLink]="'home'">So home</a></li>
+            <li><a [routerLink]="'market'">Market</a></li>
+            <li><a [routerLink]="'buy-tickets'">Métropolitain</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <h2>Inspiration</h2>
+          <ul>
+            <li><a target="_blank" href="https://dribbble.com/shots/22606836-DogeCoin-Meme-Coin-Website-Re-design">Webdesign</a></li>
+            <li><a target="_blank" href="https://dribbble.com/shots/17841393-Buy-tickets-redesign-of-Astro-festival-website">Formulaire</a></li>
+          </ul>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bottomPart">
+    <div class="links">
+      <ul>
+        <li><a target="_blank" href="https://www.dogecoin.com"><span class="icon-earth fs-24"></span></a></li>
+        <li><a target="_blank" href="https://www.reddit.com/r/dogecoin"><span class="icon-reddit fs-24"></span></a></li>
+        <li><a target="_blank" href="https://www.twitter.com/dogecoin"><span class="icon-twitter fs-24"></span></a></li>
+        <li><a target="_blank" href="https://www.facebook.com/dogecoin.eth"><span class="icon-facebook fs-24"></span></a></li>
+      </ul>
+    </div>
+
+    <div class="rightPart">
+      <p class="fs-16 gray-6d">© 2013-{{currentDate | date: 'yyyy'}} | All rights reserved.</p>
+    </div>
+  </div>
+</div>

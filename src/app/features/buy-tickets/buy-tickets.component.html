@@ -1,0 +1,147 @@
+<div class="buyTickets">
+  <h2 class="mainTitle mb-40">Dogecoin partenaire des Jeux Olympiques !</h2>
+
+  <p class="fs-24 text-center mb-40">
+    Pour les jeux olympiques, la ville de Paris a décidé de s'associer à la cryptomonnaie Dogecoin pour vendre des tickets de métro.
+  </p>
+
+  <div class="d-flex flex-row justify-content-center mb-40">
+    <div class="dashedBox">
+      <blockquote class="text-center cutive-italic">
+        <p class="mb-20">
+          "Il est fixé à 4 euros justement pour que personne n’en achète...<br>
+          En tout cas on a mis toute notre intelligence à nous dedans."
+        </p>
+
+        <p class="cutive-italic text-right">Une personne souhaitant rester anonyme</p>
+      </blockquote>
+    </div>
+  </div>
+
+  <hr class="mb-40">
+
+  <ng-container *ngIf="trades$ | async else loader">
+    <form class="mb-40" [formGroup]="ticketsForm">
+      <button class="ticketBox" (click)="addTicket('standard')">
+        <div class="w-100">
+          <h2>Standard</h2>
+
+          <p class="text-center">Le ticket dont vous avez toujours rêvé<br>(sans jamais oser le demander)</p>
+
+          <hr>
+        </div>
+
+        <div class="w-100 h-100">
+          <p class="text-left mb-20">Le Graal. Un indispensable pour se déplacer en toute quiétude durant <span class="roboto-bold fs-24">UN SEUL</span> voyage.</p>
+        </div>
+
+        <div class="w-100">
+          <hr>
+
+          <p class="cutive-bold fs-32">$4 - Ð{{ standardTicketPrice / dogePrice | number: '0.4-4' }}</p>
+        </div>
+      </button>
+
+      <button class="ticketBox" (click)="addTicket('premium')">
+        <div class="w-100">
+          <h2>Premium</h2>
+
+          <p>Le même en mieux<br>(forcément vu qu'il est plus cher !)</p>
+
+          <hr>
+        </div>
+
+        <div class="w-100 h-100">
+          <p class="text-left mb-20">Obtenez la primeur sur les places assises au détriment des femmes enceintes, des personnes âgées ou en situation de handicap.</p>
+
+          <ul>
+            <li><p>Possibilité de financement via CPF</p></li>
+            <li><p>Possibilité de paiement en 4 fois sans frais *</p></li>
+            <li><p>Assurance remboursement incluse en cas de perte, de vol ou de fin du monde</p></li>
+          </ul>
+        </div>
+
+        <div class="w-100">
+          <hr>
+
+          <p class="cutive-bold fs-32">$16 - Ð{{ premiumTicketPrice / dogePrice | number: '0.4-4' }}</p>
+        </div>
+      </button>
+
+      <div>
+        <img class="filter w-100" src="assets/img/metro.jpg" alt="">
+
+        <h3 class="roboto-bold fs-32 mb-40">Réservez vos billets</h3>
+
+        <div class="d-flex justify-content-between mb-20">
+          <label for="standard">Billet standard</label>
+
+          <div class="ticketInput">
+            <button (click)="removeTicket('standard')"><span class="icon-minus"></span></button>
+            <input [formControlName]="'standard'" type="number" id="standard" min="0">
+            <button (click)="addTicket('standard')"><span class="icon-plus"></span></button>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between mb-20">
+          <label for="premium">Billet premium</label>
+
+          <div class="ticketInput">
+            <button (click)="removeTicket('premium')"><span class="icon-minus"></span></button>
+            <input [formControlName]="'premium'" type="number" id="premium" min="0">
+            <button (click)="addTicket('premium')"><span class="icon-plus"></span></button>
+          </div>
+        </div>
+
+        <hr>
+
+        <div CLASS="d-flex justify-content-between">
+          <p class="roboto-bold fs-24">Total</p>
+
+          <p class="roboto-bold fs-24">Ð{{ applyDiscount() | number: '0.4-4' }}</p>
+        </div>
+
+        <p class="mt-10" *ngIf="ticketsForm.controls['standard'].value < 0 || ticketsForm.controls['premium'].value < 0">Ce que tu fais n'a aucun sens...</p>
+
+        <p class="mt-10" *ngIf="!ticketsForm.errors && isDiscountApplied">Hey, comme tu as acheté au moins deux tickets de métro tu bénéficies d'une remise de 5%, la chance !</p>
+
+        <button class="submitButton" [disabled]="!ticketsForm.valid" (click)="visible = true">Acheter mes tickets</button>
+      </div>
+    </form>
+  </ng-container>
+</div>
+
+<p-dialog [(visible)]="visible" [modal]="true" (onShow)="lockBasketTotal()" [draggable]="false">
+  <ng-template pTemplate="header">
+    <h2 class="p-dialog-title">Confirmation</h2>
+  </ng-template>
+
+  <div class="d-flex justify-content-between">
+    <div class="d-flex flex-col justify-content-between pr-20">
+      <div>
+        <p class="mb-20">T'es vraiment prêt à payer ce prix là ?!</p>
+
+        <ul class="mb-20">
+          <li *ngIf="ticketsForm.controls['standard'].value > 0">
+            {{ ticketsForm.controls['standard'].value }} billet(s) standard
+          </li>
+          <li *ngIf="ticketsForm.controls['premium'].value > 0">
+            {{ ticketsForm.controls['premium'].value }} billet(s) premium
+          </li>
+        </ul>
+
+        <p class="cutive-bold fs-32 text-center mb-20">Ð{{ totalPrice | number: '0.4-4' }}</p>
+
+        <p class="roboto-bold">MAIS T'ES PAS NET BAPTISE ?!</p>
+      </div>
+
+      <button class="submitButton" (click)="visible = false">Valider</button>
+    </div>
+
+    <img src="assets/img/confirm.gif" alt="">
+  </div>
+</p-dialog>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

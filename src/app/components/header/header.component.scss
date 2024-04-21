@@ -1,0 +1,40 @@
+@import "variables";
+@import "mixins";
+
+.header {
+  display: none;
+}
+
+// 1280px
+@media screen and (min-width: breakpoint("lg")) {
+  .headerMin {
+    display: none;
+  }
+
+  .header {
+    display: block;
+  }
+
+  ul {
+    li {
+      position: relative;
+      padding: 0 20px;
+
+      &:not(.noBorder)::before {
+        position: absolute;
+        content: "";
+        height: 40px;
+        border-left: 2px solid $gray-3d;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+      }
+
+      .toggleModeButton {
+        &:hover {
+          color: $doge-dark;
+        }
+      }
+    }
+  }
+}

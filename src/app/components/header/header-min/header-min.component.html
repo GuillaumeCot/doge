@@ -1,0 +1,32 @@
+<div class="header-min">
+  <h1 class="d-flex align-items-center">
+    <img src="assets/img/svg/doge.svg" height="60" width="60" alt=""/>
+    <span class="ml-20 roboto-bold fs-32">DOGECOIN</span>
+  </h1>
+
+  <button (click)="sidebarVisible = true">
+    <span class="icon-menu fs-32"></span>
+  </button>
+</div>
+
+<p-sidebar [(visible)]="sidebarVisible" (onHide)="sidebar.destroyModal();" #sidebar >
+  <ul class="d-flex flex-col align-items-center">
+    @for (item of items; track item.label) {
+      <li>
+        <a class="fs-24" [routerLink]="item.routerLink" (click)="sidebarVisible = false; sidebar.destroyModal();">{{ item.label }}</a>
+      </li>
+    }
+
+    <li class="d-flex justify-content-center noBorder pt-20">
+      <ng-container *ngIf="trades$ |async"><p class="cutive-bold fs-32">${{ dogePrice }}</p></ng-container>
+    </li>
+    <li class="noBorder d-flex justify-content-center pt-20">
+      <button class="toggleModeButton" (click)="toggleModeEvent.emit(); sidebar.destroyModal();">
+        <span class="icon-brightness-contrast fs-32"></span>
+      </button>
+    </li>
+    <li class="noBorder">
+      <a class="primary-button" [routerLink]="'buy-tickets'" (click)="sidebarVisible = false; sidebar.destroyModal();">Métropolitain</a>
+    </li>
+  </ul>
+</p-sidebar>

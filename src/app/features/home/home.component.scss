@@ -1,0 +1,33 @@
+@import "variables";
+@import "mixins";
+
+.dashedBox {
+  display: none;
+}
+
+.price {
+  @include font-size(24);
+  background-color:  $doge-black;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (min-width: breakpoint("sm")) {
+  .price {
+    display: none;
+  }
+
+  .dashedBox {
+    margin-top: 40px;
+    display: flex;
+    min-width: 512px;
+    min-height: 200px;
+    padding: 40px;
+
+    p {
+      @include font-size(64);
+    }
+  }
+}

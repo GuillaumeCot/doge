@@ -1,0 +1,20 @@
+@import "variables";
+@import "mixins";
+
+div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  a {
+    @include font-size(32);
+    text-decoration: underline;
+
+    &:hover {
+      color: $doge-light;
+    }
+  }
+}

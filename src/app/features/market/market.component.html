@@ -1,0 +1,89 @@
+<div class="mb-20 d-flex justify-content-center">
+  @if (!streamError) {
+    <ng-container *ngIf="trades$ | async else loader">
+      <div class="tableContainer">
+        <div class="table">
+          <p-table [value]="data">
+            <ng-template pTemplate="body" let-datum>
+              <tr>
+                <td>
+                  <div class="d-flex flex-row justify-content-start align-items-center">
+                    <img [src]="datum.img" alt="">
+                    <p class="roboto-bold fs-24">{{ datum.symbol | uppercase }}</p>
+                    <p class="roboto-bold fs-16 gray-6d ml-10">{{ datum.name | titlecase }}</p>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex justify-content-end">${{ datum.price }}</div>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+
+        <img class="bye" src="assets/img/bye.gif" alt="">
+      </div>
+    </ng-container>
+  } @else {
+    <app-refresh></app-refresh>
+  }
+</div>
+
+<hr>
+
+<div class="d-flex flex-col align-items-center">
+  <div class="exchanges">
+    <ng-container *ngIf="exchanges$ | async else loader">
+      @if (exchanges.length === 0) {
+        <app-refresh></app-refresh>
+      } @else {
+        <div class="topExchange">
+          <h2 class="fs-32">Top Exchange</h2>
+
+          <div class="d-flex flex-row justify-content-start align-items-center mt-20 w-100">
+            <div class="oneContainer">
+              <p class="one">1</p>
+
+              <h3 class="roboto-bold fs-32">{{ exchanges[0].name }}</h3>
+
+              <p class="background">
+                {{ exchanges[0].name }}<br>
+                {{ exchanges[0].name }}<br>
+                {{ exchanges[0].name }}<br>
+                {{ exchanges[0].name }}<br>
+                {{ exchanges[0].name }}<br>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tableExchanges p-20">
+          <p-table [value]="exchanges">
+            <ng-template pTemplate="header">
+              <tr>
+                <th><p>Exchange</p></th>
+                <th><p>Rang</p></th>
+                <th><p>Volume</p></th>
+                <th><p>Part de marché</p></th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-exchange>
+              <tr>
+                <td><a [href]="exchange.exchangeUrl" target="_blank">{{ exchange.name }}</a></td>
+                <td>{{ exchange.rank }}</td>
+                <td>${{ (exchange.volumeUsd ? exchange.volumeUsd : 0) | number: '0.0-0': 'fr-FR' }}</td>
+                <td>{{ (exchange.percentTotalVolume ? exchange.percentTotalVolume : 0) | number: '0.2-2': 'fr-FR' }}%</td>
+              </tr>
+            </ng-template>
+          </p-table>
+
+          <p class="mt-20 fs-12 text-right mb-20">*Liste des exchanges dont le volume d'échanges des dernières 24h est supérieur à 0</p>
+        </div>
+      }
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

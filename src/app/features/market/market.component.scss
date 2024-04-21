@@ -1,0 +1,197 @@
+@import "variables";
+@import "mixins";
+
+.tableContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  max-width: 1024px;
+  width: 100%;
+
+  .bye {
+    margin-bottom: 20px;
+  }
+
+  .table {
+    max-width: 768px;
+    padding: 0 20px;
+    width: 100%;
+
+    tr {
+      &:first-of-type {
+        position: relative;
+
+        &::after {
+          border: 2px dashed $doge-light;
+          border-radius: 10px;
+          content: "";
+          height: calc(100% - 4px);
+          width: calc(100% - 4px);
+          left: 0;
+          position: absolute;
+          top: 0;
+        }
+      }
+
+      td {
+        width: calc(50vw - 20px);
+
+        div {
+          padding: 10px;
+        }
+
+        img {
+          height: 24px;
+          margin-right: 10px;
+          width: 24px;
+        }
+      }
+    }
+  }
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid $gray-3d;
+}
+
+.exchanges {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+
+  .topExchange {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    justify-content: center;
+  }
+
+  .tableExchanges {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1024px;
+    width: 100%;
+  }
+
+  tr {
+    * {
+      @include roboto-regular;
+    }
+
+    th {
+      height: 80px;
+      text-align: center;
+      width: 25%;
+
+      p {
+        @include roboto-black;
+        @include font-size(16);
+      }
+
+      &:first-of-type {
+        text-align: left;
+      }
+
+      &:last-of-type {
+        text-align: right;
+      }
+    }
+
+    td {
+      border-bottom: 1px solid $gray-3d;
+      height: 40px;
+      text-align: center;
+      width: 25%;
+
+      &:first-of-type {
+        text-align: left;
+      }
+
+      &:last-of-type {
+        text-align: right;
+      }
+
+      a {
+        &:hover {
+          color: $doge-light;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.oneContainer {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  .one {
+    @include cutive-bold;
+    @include font-size(400);
+    line-height: 400px;
+    position: relative;
+    z-index: 1;
+  }
+
+  h3 {
+    background-color: $white;
+    border-radius: 10px;
+    bottom: 45px;
+    color: $doge-black;
+    left: 50%;
+    min-width: 156px;
+    padding: 0 10px;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+
+  .background {
+    @include roboto-black;
+    color: $doge-light;
+    font-size: calc(100vw / 5);
+    left: 50%;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  }
+}
+
+@media screen and (min-width: breakpoint(sm)) {
+  .exchanges {
+    tr {
+      th {
+        p {
+          @include font-size(24);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: breakpoint(lg)) {
+  .tableContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+  }
+}

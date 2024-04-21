@@ -1,0 +1,35 @@
+@import "variables";
+@import "mixins";
+
+.header-min {
+  background-color: $doge-black;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+
+  img {
+    width: 40px;
+  }
+}
+
+ul {
+  li {
+    border-bottom: 1px solid $white;
+    width: 100%;
+    padding: 10px 0;
+
+    &:last-of-type {
+      padding-top: 80px;
+      display: flex;
+      justify-content: center;
+    }
+
+    &.noBorder {
+      border-bottom: none;
+    }
+  }
+}
+
+

@@ -1,0 +1,19 @@
+<div class="d-flex flex-col align-items-center">
+  <ng-container *ngIf="trades$ | async as trades else loader">
+    <img src="assets/img/mona-lisa.jpg" alt="">
+
+    <div class="d-flex justify-content-center w-100">
+      <div class="price">
+        <p>${{ trades.get(Cryptocurrency.DOGE) }}</p>
+      </div>
+
+      <div class="dashedBox">
+        <p>${{ trades.get(Cryptocurrency.DOGE) }}</p>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
