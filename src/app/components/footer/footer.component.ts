@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {DatePipe, NgOptimizedImage} from "@angular/common";
+import {Component, Inject} from '@angular/core';
+import {DatePipe, DOCUMENT, NgOptimizedImage} from "@angular/common";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {RouterLink} from "@angular/router";
 
@@ -19,8 +19,13 @@ export class FooterComponent {
 
   protected currentDate: Date = new Date();
 
+  constructor(
+    @Inject(DOCUMENT) private document: Document) {
+  }
+
   protected goToTop(): void {
-    window.scrollTo(0, 0);
+    this.document.body.scrollTop = 0;
+    this.document.documentElement.scrollTop = 0;
   }
 
   protected newsletterForm = new FormGroup({

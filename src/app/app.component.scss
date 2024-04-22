@@ -2,7 +2,6 @@
 
 .mainContainer {
   background-color: $doge-black;
-  overflow-x: hidden;
 }
 
 .lightMode {
@@ -14,7 +13,6 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 101px);
     justify-content: space-between;
 
     .inner {
